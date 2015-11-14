@@ -20,7 +20,7 @@ use Doctrine\Common\Collections\Collection as DoctrineCollection;
  * @subpackage  Entity.Doctrine
  * @author      Mykola Zyk <relo.san.pub@gmail.com>
  */
-class DoctrineBridge
+class Bridge
 {
     /**
      * Chack if dataset and bridge match identifiers (representate same object).
