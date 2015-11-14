@@ -33,7 +33,7 @@ class JsonExtraType extends Type
      */
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {
-        if (null === $value) {
+        if (null === $value || [] === $value) {
             return null;
         }
 
