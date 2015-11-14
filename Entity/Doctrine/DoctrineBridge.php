@@ -7,16 +7,17 @@
  * @link        https://github.com/dinecat/DataStructures
  */
 
-namespace Dinecat\DataStructures\Entity;
+namespace Dinecat\DataStructures\Entity\Doctrine;
 
 use Dinecat\DataStructures\Collection\Collection;
+use Dinecat\DataStructures\Entity\Dataset;
 use Dinecat\DataStructures\Exception;
 use Doctrine\Common\Collections\Collection as DoctrineCollection;
 
 /**
  * Bridge class for doctrine entity.
  * @package     DinecatDataStructures
- * @subpackage  Entity
+ * @subpackage  Entity.Doctrine
  * @author      Mykola Zyk <relo.san.pub@gmail.com>
  */
 class DoctrineBridge
