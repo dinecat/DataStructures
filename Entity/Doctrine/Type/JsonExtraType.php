@@ -72,42 +72,34 @@ class JsonExtraType extends Type
 
     /**
      * Encode extra data for safe storing to JSON.
-     * @param   mixed   $input  Input array (to JSON).
-     * @return  mixed
+     * @param   array   $input  Input array (to JSON).
+     * @return  array
      */
-    protected function encodeExtra($input)
+    protected function encodeExtra(array &$input)
     {
-        if (is_array($input)) {
-            foreach ($input as $key => $value) {
-                if (is_array($value)) {
-                    $input[$key] = $this->encodeExtra($value);
-                } elseif ($value instanceof \DateTime) {
-                    $input[$key] = 'datetime#' . $input->format(\DateTime::ISO8601);
-                }
+        foreach ($input as &$value) {
+            if (is_array($value)) {
+                $value = $this->encodeExtra($value);
+            } elseif ($value instanceof \DateTime) {
+                $value = 'datetime#' . $value->format(\DateTime::ISO8601);
             }
-        } elseif ($input instanceof \DateTime) {
-            return 'datetime#' . $input->format(\DateTime::ISO8601);
         }
         return $input;
     }
 
     /**
      * Decode extra data from JSON.
-     * @param   mixed   $input  Input array (from JSON).
-     * @return  mixed
+     * @param   array   $input  Input array (from JSON).
+     * @return  array
      */
-    protected function decodeExtra($input)
+    protected function decodeExtra(array &$input)
     {
-        if (is_array($input)) {
-            foreach ($input as $key => $value) {
-                if (is_array($value)) {
-                    $input[$key] = $this->decodeExtra($value);
-                } elseif (mb_substr($value, 0, 9) === 'datetime#') {
-                    $input[$key] = new \DateTime(mb_substr($value, 9));
-                }
+        foreach ($input as &$value) {
+            if (is_array($value)) {
+                $value = $this->decodeExtra($value);
+            } elseif (mb_substr($value, 0, 9) === 'datetime#') {
+                $value = new \DateTime(mb_substr($value, 9));
             }
-        } elseif (is_string($input) && mb_substr($input, 0, 9) === 'datetime#') {
-            return new \DateTime(mb_substr($input, 9));
         }
         return $input;
     }

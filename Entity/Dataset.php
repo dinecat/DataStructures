@@ -21,15 +21,15 @@ class Dataset
      * Dataset completion state.
      * @var integer
      */
-    protected $isComplete = false;
+    protected $datasetComplete = false;
 
     /**
      * Check if dataset contain complete data.
      * @return  boolean
      */
-    public function isComplete()
+    public function isDatasetComplete()
     {
-        return $this->isComplete;
+        return $this->datasetComplete;
     }
 
     /**
@@ -37,9 +37,9 @@ class Dataset
      * @param   boolean $state
      * @return  static
      */
-    public function setCompletion($state)
+    public function setDatasetCompletion($state)
     {
-        $this->isComplete = $state;
+        $this->datasetComplete = $state;
         return $this;
     }
 
