@@ -2,7 +2,7 @@
     "name": "dinecat/data-structures",
     "type": "library",
     "description": "Library provide various data structures and related functionality.",
-    "keywords": ["structure", "collection", "set"],
+    "keywords": ["structure", "set"],
     "homepage": "https://github.com/dinecat/DataStructures",
     "license": "MIT",
     "authors": [

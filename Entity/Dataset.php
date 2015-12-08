@@ -11,21 +11,20 @@ namespace Dinecat\DataStructures\Entity;
 
 /**
  * Base dataset class.
- * @package     DinecatDataStructures
- * @subpackage  Entity
- * @author      Mykola Zyk <relo.san.pub@gmail.com>
+ * @package DinecatDataStructures\Entity
+ * @author  Mykola Zyk <relo.san.pub@gmail.com>
  */
 class Dataset
 {
     /**
      * Dataset completion state.
-     * @var integer
+     * @var int
      */
     protected $datasetComplete = false;
 
     /**
-     * Check if dataset contain complete data.
-     * @return  boolean
+     * Get boolean flag of dataset completeness.
+     * @return  bool
      */
     public function isDatasetComplete()
     {
@@ -33,8 +32,8 @@ class Dataset
     }
 
     /**
-     * Set state of completion dataset.
-     * @param   boolean $state
+     * Set state of dataset completion.
+     * @param   bool    $state
      * @return  static
      */
     public function setDatasetCompletion($state)

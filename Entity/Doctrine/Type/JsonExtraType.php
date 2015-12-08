@@ -9,14 +9,13 @@
 
 namespace Dinecat\DataStructures\Entity\Doctrine\Type;
 
-use Doctrine\DBAL\Types\Type;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
+use Doctrine\DBAL\Types\Type;
 
 /**
  * Type class for json type with extended transformations.
- * @package     DinecatDataStructures
- * @subpackage  Entity.Doctrine.Type
- * @author      Mykola Zyk <relo.san.pub@gmail.com>
+ * @package DinecatDataStructures\Entity\Doctrine\Type
+ * @author  Mykola Zyk <relo.san.pub@gmail.com>
  */
 class JsonExtraType extends Type
 {
@@ -33,7 +32,7 @@ class JsonExtraType extends Type
      */
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {
-        if (null === $value || [] === $value) {
+        if ($value === null || $value === []) {
             return null;
         }
 
@@ -45,7 +44,7 @@ class JsonExtraType extends Type
      */
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
-        if (null === $value || '' === $value) {
+        if ($value === null || $value === '') {
             return [];
         }
 
@@ -75,7 +74,7 @@ class JsonExtraType extends Type
      * @param   array   $input  Input array (to JSON).
      * @return  array
      */
-    protected function encodeExtra(array &$input)
+    protected function encodeExtra(array $input)
     {
         foreach ($input as &$value) {
             if (is_array($value)) {
@@ -92,7 +91,7 @@ class JsonExtraType extends Type
      * @param   array   $input  Input array (from JSON).
      * @return  array
      */
-    protected function decodeExtra(array &$input)
+    protected function decodeExtra(array $input)
     {
         foreach ($input as &$value) {
             if (is_array($value)) {
